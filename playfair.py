@@ -5,7 +5,7 @@ def matrix(key):
 		# we ignore the letter "J" and convert all occurances of "J" in the key to "I"
 		if e == "J":
 			e = "I"
-		
+
 		if e not in matrix:
 			matrix.append(e)
 	alphabet="ABCDEFGHIKLMNOPQRSTUVWXYZ"
@@ -145,15 +145,19 @@ def decrypt(cipher):
 
 
 print "Playfair Cipher"
-order=input("Choose :\n1,Encrypting \n2,Decrypting\n")
+order=input("Choose :\n1.Encryption \n2.Decryption\n")
 if order==1:
 	key=raw_input("Please input the key : ")
 	message=raw_input("Please input the message : ")
 	print "Encrypting: \n"+"Message: "+message
 	print "Break the message into digraphs: "
 	print message_to_digraphs(message)
+
+	# print the matrix in a bettter way
 	print "Matrix: "
-	print matrix(key)
+	for element in matrix(key):
+		print element
+
 	print "Cipher: "
 	print encrypt(message)
 elif order==2:
