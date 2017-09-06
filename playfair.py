@@ -1,15 +1,19 @@
-
 def matrix(key):
 	matrix=[]
+
 	for e in key.upper():
+		# we ignore the letter "J" and convert all occurances of "J" in the key to "I"
+		if e == "J":
+			e = "I"
+		
 		if e not in matrix:
 			matrix.append(e)
 	alphabet="ABCDEFGHIKLMNOPQRSTUVWXYZ"
-	
+
 	for e in alphabet:
 		if e not in matrix:
-			matrix.append(e)	
-	
+			matrix.append(e)
+
 	#initialize a new list. Is there any elegant way to do that?
 	matrix_group=[]
 	for e in range(5):
@@ -75,7 +79,7 @@ def encrypt(message):
 			if q2==4:
 				q2=-1
 			cipher.append(key_matrix[p1][q1+1])
-			cipher.append(key_matrix[p1][q2+1])		
+			cipher.append(key_matrix[p1][q2+1])
 		elif q1==q2:
 			if p1==4:
 				p1=-1;
@@ -97,7 +101,7 @@ def cipher_to_digraphs(cipher):
 	return new
 
 
-def decrypt(cipher):	
+def decrypt(cipher):
 	cipher=cipher_to_digraphs(cipher)
 	key_matrix=matrix(key)
 	plaintext=[]
@@ -110,7 +114,7 @@ def decrypt(cipher):
 			if q2==4:
 				q2=-1
 			plaintext.append(key_matrix[p1][q1-1])
-			plaintext.append(key_matrix[p1][q2-1])		
+			plaintext.append(key_matrix[p1][q2-1])
 		elif q1==q2:
 			if p1==4:
 				p1=-1;
@@ -125,7 +129,7 @@ def decrypt(cipher):
 	for unused in range(len(plaintext)):
 		if "X" in plaintext:
 			plaintext.remove("X")
-	
+
 	output=""
 	for e in plaintext:
 		output+=e
@@ -149,8 +153,8 @@ if order==1:
 	print "Break the message into digraphs: "
 	print message_to_digraphs(message)
 	print "Matrix: "
-	print matrix(key) 
-	print "Cipher: " 
+	print matrix(key)
+	print "Cipher: "
 	print encrypt(message)
 elif order==2:
 	key=raw_input("Please input the key : ")
@@ -161,5 +165,3 @@ elif order==2:
 	print decrypt(cipher)
 else:
 	print "Error"
-
-
