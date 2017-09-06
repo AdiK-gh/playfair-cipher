@@ -46,7 +46,7 @@ def message_to_digraphs(message_original):
 			message.insert(i+1,'X')
 		i=i+2
 
-	Use "Z" as a padding letter
+	# Use "Z" as a padding letters
 	#If it is odd digit, add an "Z" at the end
 	if len(message)%2==1:
 		message.append("Z")
