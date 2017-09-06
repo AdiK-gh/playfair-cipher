@@ -38,6 +38,7 @@ def message_to_digraphs(message_original):
 		if " " in message:
 			message.remove(" ")
 
+	# Use "X" as a filler letter
 	#If both letters are the same, add an "X" after the first letter.
 	i=0
 	for e in range(len(message)/2):
@@ -45,9 +46,10 @@ def message_to_digraphs(message_original):
 			message.insert(i+1,'X')
 		i=i+2
 
-	#If it is odd digit, add an "X" at the end
+	Use "Z" as a padding letter
+	#If it is odd digit, add an "Z" at the end
 	if len(message)%2==1:
-		message.append("X")
+		message.append("Z")
 	#Grouping
 	i=0
 	new=[]
