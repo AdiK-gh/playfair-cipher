@@ -110,8 +110,8 @@ def decrypt(cipher):
 	key_matrix=matrix(key)
 	plaintext=[]
 	for e in cipher:
-		p1,q1=find_position(key_matrix,e[0])
-		p2,q2=find_position(key_matrix,e[1])
+		p1,q1=find_position(key_matrix,e[0].upper())
+		p2,q2=find_position(key_matrix,e[1].upper())
 		if p1==p2:
 			if q1==4:
 				q1=-1
