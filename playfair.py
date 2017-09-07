@@ -33,7 +33,7 @@ def message_to_digraphs(message_original):
 	for e in message_original:
 		message.append(e)
 
-	#Delet space
+	#Delete space
 	for unused in range(len(message)):
 		if " " in message:
 			message.remove(" ")
@@ -68,13 +68,15 @@ def find_position(key_matrix,letter):
 
 	return x,y
 
-def encrypt(message):
+def encrypt(message, key):
 	message=message_to_digraphs(message)
 	key_matrix=matrix(key)
 	cipher=[]
 	for e in message:
-		p1,q1=find_position(key_matrix,e[0])
-		p2,q2=find_position(key_matrix,e[1])
+
+		# There was an error here as the lowercase letters were checked in the key_matrix containing uppercase letters
+		p1,q1=find_position(key_matrix,e[0].upper())
+		p2,q2=find_position(key_matrix,e[1].upper())
 		if p1==p2:
 			if q1==4:
 				q1=-1
@@ -161,7 +163,7 @@ if order==1:
 		print element
 
 	print "Cipher: "
-	print encrypt(message)
+	print encrypt(message, key)
 elif order==2:
 	key=raw_input("Please input the key : ")
 	cipher=raw_input("Please input the cipher text: ")
